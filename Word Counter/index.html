@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h1 {
+            text-align: center;
+            background-color: blue;
+            color: white;
+            width: 50%;
+        }
+        
+        #text {
+            width: 50vw;
+            height: 50vh;
+        }
+        
+        #counter {
+            text-align: center;
+            background-color: blue;
+            color: white;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Word Counter</h1>
+        <div id='paragraph'>
+            <textarea id="text"></textarea>
+        </div>
+        <div id='counter'>
+            <span id="words">0</span> Words and
+            <span id="character">0</span> characters
+        </div>
+    </div>
+    <script>
+        let elem = document.getElementById('text');
+        elem.addEventListener('input', function(params) {
+            let text = this.value;
+            // console.log(text);
+            let char = document.getElementById('character');
+            char.innerText = text.length;
+
+
+            let trimText = text.trim();
+            let wordsArray = trimText.split(" ");
+            let cleanArray = wordsArray.filter((elem) => elem != "");
+            let words = document.getElementById('words');
+            words.innerText = cleanArray.length;
+
+        })
+    </script>
+</body>
+
+</html>

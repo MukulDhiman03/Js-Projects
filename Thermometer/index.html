@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .temp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="temp">
+            <label>Celcius</label>
+            <br>
+            <input type="number" value="0" id="cel">
+        </div>
+        <div class="temp">
+            <label>Fahrahnite</label>
+            <br>
+            <input type="number" value="32" id="fah">
+        </div>
+    </div>
+    <script>
+        let cel = document.getElementById("cel");
+        let fah = document.getElementById("fah");
+
+        cel.addEventListener('input', function() {
+            let x = this.value;
+            // console.log(x);
+            let res = (x * (9 / 5)) + 32;
+            if (!Number.isInteger(res)) {
+                res = res.toFixed(4);
+            }
+            fah.value = res;
+        })
+        fah.addEventListener('input', function() {
+            let y = this.value;
+            // console.log(x);
+            let res = (y - 32) * (5 / 9);
+            if (!Number.isInteger(res)) {
+                res = res.toFixed(4);
+            }
+
+            cel.value = res;
+        })
+    </script>
+</body>
+
+</html>

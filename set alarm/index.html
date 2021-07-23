@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" style="width:15vw" placeholder="Enter the time in yyyy-mm-d h:m:s">
+        <br>
+        <br>
+        <button type="submit" id="btn">Set alarm</button>
+    </form>
+    <script>
+        let audio = new Audio('boom.wav');
+
+        function ring() {
+            audio.play();
+        }
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const alarm = document.querySelector('input[type="text"]');
+            // console.log(alarm.value);
+            const alarmDate = new Date(alarm.value);
+            console.log(`setting alarm for ${alarmDate}...`)
+
+
+            const nowTime = new Date();
+            let alarmTime = alarmDate - nowTime;
+            if (alarmTime >= 0) {
+                setTimeout(() => {
+                    ring();
+                }, alarmTime)
+            }
+        })
+    </script>
+</body>
+
+</html>

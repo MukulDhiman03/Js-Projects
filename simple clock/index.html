@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Clock</title>
+</head>
+
+<body onload="timeHandler(); setInterval('timeHandler()',1000)">
+
+    <script>
+        function timeHandler() {
+            let currentTime = new Date();
+            let hour = currentTime.getHours();
+            let min = currentTime.getMinutes();
+            let sec = currentTime.getSeconds();
+
+            let currentHour = ((hour < 10) ? "0" : "") + hour;
+            let currentMin = ((min < 10) ? "0" : "") + min;
+            let currentSec = ((sec < 10) ? "0" : "") + sec;
+
+            let str = (hour < 12) ? "PM" : "AM";
+            let html = `${currentHour} : ${currentMin} : ${currentSec} : ${str} `
+
+            document.body.innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>
